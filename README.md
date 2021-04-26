@@ -4,20 +4,10 @@
 
 # Sobre o projeto
 
-Sistema Escolar é uma API desenvolvida em Java e Spring Boot, construída para um  **Desafio de Programação**.
+Microservice Star Wars é uma API desenvolvida em Java 11 e Spring Boot, construída para se comunicar com API publica **SWAPI**.
 
 
-A pedagoga e empresária Paola Bucharelli está com novos planos de investimentos e
-para isso decidiu que comprará a Escola Xavier para crianças com altas habilidades. Nessa escola,
-os alunos serão matriculados em um de três cursos possíveis (exatas, humanas ou biológicas).
-O aluno uma vez matriculado em um curso deverá realizar ao menos 3 disciplinas de sua
-escolha. Para ser considerado aprovado no curso, o aluno deverá ter média final maior ou igual
-a 7, sendo que o intervalo de notas é de 0 a 10.
-Visando ter maior controle e monitorar a evolução dos alunos a Paola resolveu contratar
-uma empresa de TI para desenvolver um sistema que lhe trouxesse as informações mais
-relevantes de cada curso. Após uma cuidadosa procura ela encontrou a empresa ideal para a
-construção dessa aplicação a “U-Can Inc.”, devido ao know-how e excelência na construção de
-seus softwares.
+Esse microservice fornece uma interface REST que pode ser chamada via HTTP. O serviço buscará informações de um banco de dados. Em outros casos,o serviço chamará uma API STAR WARS externa via HTTP para buscar e exibir de planeta e quantidade de aparições em filmes, uma lista de filmes em que o planeta já apareceu.
 
 ![Mobile 1](https://raw.githubusercontent.com/ariellopes94/imagens-para-readme/master/Star%20Wars/mapeamento%20estrutura%20projeto.png)  <br />
 Figura 1: Estrutura de alto nível do sistema de microsserviço
