@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ariellopes.api.starwars.exception.model.PlanetaJaExisteException;
 import com.ariellopes.api.starwars.exception.model.PlanetaNaoEncontradoException;
+import com.ariellopes.api.starwars.exception.model.PlanetaNaoExisteException;
 import com.ariellopes.api.starwars.persistence.entity.PlanetaEntity;
 import com.ariellopes.api.starwars.persistence.repository.PlanetaRepository;
 import com.ariellopes.api.starwars.rest.controller.domain.dto.EditaPlanetaDto;
@@ -46,6 +47,11 @@ public class PlanetaServiceImpl implements PlanetaService {
 	@Override
 	public Page<PlanetaDtoConsultaTodos> buscarTodos(Pageable pageable) {
 		Page<PlanetaEntity> planetaEntity = planetaRepository.findAll(pageable);
+		
+		if(planetaEntity.getTotalElements() == 0) {
+			throw new PlanetaNaoExisteException("Não existe Planeta");
+		}
+	
 		Page<PlanetaDtoConsultaTodos> contactDtoPage = planetaEntity.map(modelMapper::toPlanetaDtoConsultaTodos);
 		for (PlanetaDtoConsultaTodos planetaDto : contactDtoPage) {
 			StarWarsModel api = apiStarWarsExterna.consultarPorNome(planetaDto.getNome(), false);

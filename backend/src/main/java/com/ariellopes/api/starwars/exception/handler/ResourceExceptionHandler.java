@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.ariellopes.api.starwars.exception.handler.validation.StandardError;
 import com.ariellopes.api.starwars.exception.handler.validation.ValidationError;
 import com.ariellopes.api.starwars.exception.model.PlanetaJaExisteException;
+import com.ariellopes.api.starwars.exception.model.PlanetaNaoEncontradoException;
+import com.ariellopes.api.starwars.exception.model.PlanetaNaoExisteException;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
@@ -51,5 +53,35 @@ public class ResourceExceptionHandler {
 		erro.setMensagemDesenvolvedor("http://erros.starwars.com/400");
 		
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+	}
+	
+	@ExceptionHandler(PlanetaNaoExisteException.class)
+	public ResponseEntity<StandardError> handlerObjectNotFoundException(PlanetaNaoExisteException e,
+			                                                            HttpServletRequest request){
+		StandardError erro = new StandardError();
+		
+		erro.setTimestamp(System.currentTimeMillis());
+		erro.setStatus(400);
+		erro.setError("Planeta não existe");
+		erro.setMessage(e.getMessage());
+		erro.setPath(request.getRequestURI());
+		erro.setMensagemDesenvolvedor("http://erros.starwars.com/400");
+		
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+	}
+	
+	@ExceptionHandler(PlanetaNaoEncontradoException.class)
+	public ResponseEntity<StandardError> handlerObjectNotFoundException(PlanetaNaoEncontradoException e,
+			                                                            HttpServletRequest request){
+		StandardError erro = new StandardError();
+		
+		erro.setTimestamp(System.currentTimeMillis());
+		erro.setStatus(404);
+		erro.setError("Não existe planeta para esse ID");
+		erro.setMessage(e.getMessage());
+		erro.setPath(request.getRequestURI());
+		erro.setMensagemDesenvolvedor("http://erros.starwars.com/404");
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
 	}
 }
