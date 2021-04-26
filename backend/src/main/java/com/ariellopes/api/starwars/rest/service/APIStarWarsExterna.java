@@ -1,10 +1,8 @@
 package com.ariellopes.api.starwars.rest.service;
 
-import com.ariellopes.api.starwars.rest.controller.StarWars;
-import com.ariellopes.api.starwars.rest.controller.domain.dto.PlanetaDtoConsulta;
-import com.ariellopes.api.starwars.rest.model.modelApiStarWarsExterna.PlanetaApiStarWarsExterna;
+import com.ariellopes.api.starwars.rest.model.StarWarsModel;
 
 public interface APIStarWarsExterna {
 
-	public StarWars consultarPorNome(String nome, Boolean buscarFilme);
+	public StarWarsModel consultarPorNome(String nome, Boolean buscarFilme);
 }

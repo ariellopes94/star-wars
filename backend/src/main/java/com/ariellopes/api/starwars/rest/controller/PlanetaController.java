@@ -30,7 +30,6 @@ import com.ariellopes.api.starwars.rest.controller.domain.dto.NovoPlanetaDto;
 import com.ariellopes.api.starwars.rest.controller.domain.dto.PlanetaDtoConsulta;
 import com.ariellopes.api.starwars.rest.controller.domain.dto.PlanetaDtoConsultaTodos;
 import com.ariellopes.api.starwars.rest.model.PlanetaModel;
-import com.ariellopes.api.starwars.rest.service.APIStarWarsExterna;
 import com.ariellopes.api.starwars.rest.service.PlanetaService;
 
 @RestController
@@ -40,8 +39,8 @@ public class PlanetaController {
 	@Autowired
 	private PlanetaService planetaService;
 
-	@Autowired
-	private APIStarWarsExterna apiStarWarsExterna;
+	// @Autowired
+	// private APIStarWarsExterna apiStarWarsExterna;
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
@@ -85,7 +84,7 @@ public class PlanetaController {
 		PlanetaModel obj = planetaService.consultarPorCodigo(codigo);
 		return ResponseEntity.ok().body(obj);
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> delete(@PathVariable String id){
@@ -99,32 +98,5 @@ public class PlanetaController {
 		planetaService.editar(planetaDto, id);
 		return ResponseEntity.noContent().build();
 	}
-
-	/*
-	 * 
-	 * @PutMapping(value = "/{codigoPlaneta}") public ResponseEntity<PlanetaModel>
-	 * atualizar(@RequestBody PlanetaModel planeta, @PathVariable String
-	 * codigoPlaneta) { planeta.setCodigo(codigoPlaneta);
-	 * /planetaService.editar(planeta); return ResponseEntity.noContent().build(); }
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * @GetMapping("/starwars/filtar/{nome}") public ResponseEntity<StarWars>
-	 * planetaApiExternaoBuscarPorNome(@PathVariable String nome) {
-	 * 
-	 * StarWars planetaApiNome =
-	 * this.apiStarWarsExterna.consultarPorNome(nome,true);
-	 * 
-	 * System.out.println(planetaApiNome);
-	 * 
-	 * return ResponseEntity.ok(planetaApiNome); }
-	 */
+	
 }

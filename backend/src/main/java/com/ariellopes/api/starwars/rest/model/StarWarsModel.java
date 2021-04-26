@@ -1,4 +1,4 @@
-package com.ariellopes.api.starwars.rest.controller;
+package com.ariellopes.api.starwars.rest.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StarWars implements Serializable {
+public class StarWarsModel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public int qtExibicaosEmFilme;

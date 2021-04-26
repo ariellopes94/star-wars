@@ -1,11 +1,5 @@
 package com.ariellopes.api.starwars.rest.service.impl;
 
-import com.ariellopes.api.starwars.rest.controller.StarWars;
-import com.ariellopes.api.starwars.rest.controller.domain.dto.PlanetaDtoConsulta;
-import com.ariellopes.api.starwars.rest.model.modelApiStarWarsExterna.FilmeApiStarWarsExterna;
-import com.ariellopes.api.starwars.rest.model.modelApiStarWarsExterna.PlanetaApiStarWarsExterna;
-import com.ariellopes.api.starwars.rest.service.APIStarWarsExterna;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +11,12 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.ariellopes.api.starwars.exception.model.UrlNaoEncontradaException;
+import com.ariellopes.api.starwars.rest.model.StarWarsModel;
+import com.ariellopes.api.starwars.rest.model.modelApiStarWarsExterna.FilmeApiStarWarsExterna;
+import com.ariellopes.api.starwars.rest.model.modelApiStarWarsExterna.PlanetaApiStarWarsExterna;
+import com.ariellopes.api.starwars.rest.service.APIStarWarsExterna;
+
 import reactor.core.publisher.Mono;
 
 @Service
@@ -27,8 +27,8 @@ public class APIStarWarsExternaImpl implements APIStarWarsExterna {
 
 	@Override
 	@Cacheable(cacheNames = "qtExibicaosEmFilmeCache")
-	public StarWars consultarPorNome(String nomeParaBuscar, Boolean buscarFilme) {
-		StarWars starWars = new StarWars();
+	public StarWarsModel consultarPorNome(String nomeParaBuscar, Boolean buscarFilme) {
+		StarWarsModel starWars = new StarWarsModel();
 		Mono<PlanetaApiStarWarsExterna> monoPlaneta = this.webClientStarWars.method(HttpMethod.GET)
 				.uri("/api/planets/?search={nome}", nomeParaBuscar).retrieve()
 				.bodyToMono(PlanetaApiStarWarsExterna.class);
@@ -68,6 +68,12 @@ public class APIStarWarsExternaImpl implements APIStarWarsExterna {
 		imgUrl.put("4/", "FILME 04 The Phantom Menace");
 		imgUrl.put("5/", "FILME 05 Attack of the Clones");
 		imgUrl.put("6/", "FILME 06 Revenge of the Sith");
+
+		String urlDaImg = imgUrl.get(id);
+
+		if (urlDaImg == null) {
+			throw new UrlNaoEncontradaException("Não Existe imagem para essa url");
+		}
 
 		return imgUrl.get(id);
 	}
