@@ -7,7 +7,7 @@
 Microservice Star Wars é uma API desenvolvida em Java 11 e Spring Boot, construída para se comunicar com API publica **SWAPI**.
 
 
-Esse microservice fornece uma interface REST que pode ser chamada via HTTP. O serviço buscará informações de um banco de dados. Em outros casos,o serviço chamará uma API STAR WARS externa via HTTP para buscar e exibir de planeta e quantidade de aparições em filmes, uma lista de filmes em que o planeta já apareceu.
+Esse microservice fornece uma interface REST que pode ser chamada via HTTP. O serviço buscará informações de um banco de dados. Em outros casos,o serviço chamará uma API STAR WARS externa via HTTP para buscar e exibir planeta e quantidade de aparições em filmes, uma lista de filmes em que o planeta já apareceu.
 
 ![Mobile 1](https://raw.githubusercontent.com/ariellopes94/imagens-para-readme/master/Star%20Wars/mapeamento%20estrutura%20projeto.png)  <br />
 Figura 1: Estrutura de alto nível do sistema de microsserviço
