@@ -1,5 +1,5 @@
 # Microservice Star Wars 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/ariellopes94/gestao-escolar/blob/main/LICENSE) 
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/ariellopes94/star-wars/blob/main/LICENSE) 
 
 
 # Sobre o projeto
