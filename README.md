@@ -26,7 +26,7 @@ Figura 1: Estrutura de alto nível do sistema de microsserviço
 
 ## Documentação desenvolvida com Springdoc-openapi-ui
 ![Mobile 2](https://raw.githubusercontent.com/ariellopes94/imagens-para-readme/master/Star%20Wars/star-wars-gif.gif)
-https://teste-sistema-escolar.herokuapp.com/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+ https://starwarsapiariellopes2021.herokuapp.com/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
 
 # Tecnologias utilizadas
 ## Back end
